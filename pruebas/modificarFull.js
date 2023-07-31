@@ -1,7 +1,21 @@
 const formulario = document.getElementById('formulario');
-function enviarDatos( ) {
+const selectId = document.getElementById('select-id')
+fetch("http://localhost:3000/mostrar")
+.then(Response => Response.json())
+.then(tortas => {
+  tortas.forEach(torta => {
+    getId(torta)  
+  });
+})
 
-  const error = document.getElementById('error-datos')
+function getId (torta) { 
+  const injectHTML = '<option value='+ torta._id
+  +'>' + torta.nombre + '</option>'
+  selectId.innerHTML += injectHTML
+}
+
+function enviarDatos () {
+
   const nombre = document.getElementById('input-nombre').value
   const descripcion = document.getElementById('input-descripcion').value
   const porcion1 = document.getElementById('input-porcion1').value
@@ -15,30 +29,27 @@ function enviarDatos( ) {
   const porcion5 = document.getElementById('input-porcion5').value
   const precio5 = document.getElementById('input-precio5').value
   const imgDescripcion = document.getElementById('input-descripcion-img').value
-  
 
   if( 
-  nombre === '' ||
-  descripcion === '' || 
-  porcion1 === '' || 
-  precio1 === '' ||
-  porcion2 === '' ||
-  precio2 === '' ||
-  porcion3 === '' ||
-  precio3 === '' || 
-  porcion4 === '' || 
-  precio4 === '' || 
-  porcion5 === '' ||
-  precio5 === '' ||
-  imgDescripcion === ''
-  ) {
-    return (error.textContent = "Todos los campos son obligatorios")
-  }
-
+    nombre === '' ||
+    descripcion === '' || 
+    porcion1 === '' || 
+    precio1 === '' ||
+    porcion2 === '' ||
+    precio2 === '' ||
+    porcion3 === '' ||
+    precio3 === '' || 
+    porcion4 === '' || 
+    precio4 === '' || 
+    porcion5 === '' ||
+    precio5 === '' ||
+    imgDescripcion === ''
+    ) {
+      return (error.textContent = "Todos los campos son obligatorios")
+    }
+  
   const porcionesArray = [porcion1, porcion2, porcion3, porcion4, porcion5];
   const precioArray = [precio1, precio2, precio3, precio4, precio5];
-
-  
 
   const formData = new FormData();
   formData.append('nombre', nombre);
@@ -48,10 +59,10 @@ function enviarDatos( ) {
   formData.append('imagen', document.getElementById('input-imagen').files[0]);
   formData.append('img_descripcion', imgDescripcion)
 
-  
+  const id = selectId.value
 
-  fetch('http://localhost:3000/agregartorta',{
-    method: "POST",
+  fetch(`http://localhost:3000/modificarfull/${id}`,{
+    method: "PUT",
     body: formData,
   })
   .then((response) => response.json())
@@ -63,24 +74,10 @@ function enviarDatos( ) {
         response: response.text(),
       });
       if (response.status === 200) {
-      /*   document.getElementById('input-image').value = "";
-        nombre = "";
-        descripcion = "";
-        porcion1 = "";
-        porcion2 = "";
-        porcion3 = "";
-        porcion4 = "";
-        porcion5 = "";
-        precio1 = "";
-        precio2 = "";
-        precio3 = "";
-        precio4 = "";
-        precio5 = ""; */
-
-        alert(`Producto ${nombre} creado correctamente`);
+        alert(`Producto actualizado correctamente`);
       } else {
-        alert("Error al crear el producto");
-        response.status(400).json({msg: "error al crear el producto"})
+        alert("Error al actualizar el producto");
+        response.status(400).json({msg: "error al actualizar el producto"})
       }
     })
     .catch(function (error) {

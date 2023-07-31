@@ -13,11 +13,21 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-              <h1>Ingreso de producto</h1>
+              <h1>Modificar Producto</h1>
             </div>
         </div class="justify-content-center">
         <form class="row g-3" id="formulario" enctype="multipart/form-data">
             <p id="error-datos" class="text-danger"></p>
+            <label for="selected-id" class="form-label">
+              Nombre del producto a modificar
+              </label>
+            <select
+              class="form-select"
+              id="select-id"
+              aria-label="Default select example">
+              <option selected> Seleccione producto para modificar</option>
+              
+            </select>
             <div class="col-12">
                 <label for="input-nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" placeholder="Ingrese nombre del producto" id="input-nombre">
@@ -31,7 +41,7 @@
 
               <div class="col-6">
                 <label for="input-porcion1" class="form-label">Porcion 1:</label>
-                <input type="text" class="form-control" placeholder="Ingrese diametro del producto" id="input-porcion1">
+                <input type="text" class="form-control" placeholder="Ingrese porciones del producto" id="input-porcion1">
               </div>
               <div class="col-6">
                 <label for="input-precio1" class="form-label">Precio 1:</label>
@@ -39,7 +49,7 @@
               </div>
               <div class="col-6">
                 <label for="input-porcion2" class="form-label">Porcion 2:</label>
-                <input type="text" class="form-control" placeholder="Ingrese diametro del producto" id="input-porcion2">
+                <input type="text" class="form-control" placeholder="Ingrese porciones del producto" id="input-porcion2">
               </div>
               <div class="col-6">
                 <label for="input-precio2" class="form-label">Precio 2:</label>
@@ -47,7 +57,7 @@
               </div>
               <div class="col-6">
                 <label for="input-porcion3" class="form-label">Porcion 3:</label>
-                <input type="text" class="form-control" placeholder="Ingrese diametro del producto" id="input-porcion3">
+                <input type="text" class="form-control" placeholder="Ingrese porciones del producto" id="input-porcion3">
               </div>
               <div class="col-6">
                 <label for="input-precio3" class="form-label">Precio 3:</label>
@@ -55,7 +65,7 @@
               </div>
               <div class="col-6">
                 <label for="input-porcion4" class="form-label">Porcion 4:</label>
-                <input type="text" class="form-control" placeholder="Ingrese diametro del producto" id="input-porcion4">
+                <input type="text" class="form-control" placeholder="Ingrese porciones del producto" id="input-porcion4">
               </div>
               <div class="col-6">
                 <label for="input-precio4" class="form-label">Precio 4:</label>
@@ -63,7 +73,7 @@
               </div>
               <div class="col-6">
                 <label for="input-porcion5" class="form-label">Porcion 5:</label>
-                <input type="text" class="form-control" placeholder="Ingrese diametro del producto" id="input-porcion5">
+                <input type="text" class="form-control" placeholder="Ingrese porciones del producto" id="input-porcion5">
               </div>
               <div class="col-6">
                 <label for="input-precio5" class="form-label">Precio 5:</label>
@@ -84,7 +94,7 @@
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="crearTorta.js"></script>
+    <script src="modificarFull.js"></script>
 </body>
 
 </html>
