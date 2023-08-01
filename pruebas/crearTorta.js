@@ -16,7 +16,6 @@ function enviarDatos( ) {
   const precio5 = document.getElementById('input-precio5').value
   const imgDescripcion = document.getElementById('input-descripcion-img').value
   
-
   if( 
   nombre === '' ||
   descripcion === '' || 
@@ -37,8 +36,6 @@ function enviarDatos( ) {
 
   const porcionesArray = [porcion1, porcion2, porcion3, porcion4, porcion5];
   const precioArray = [precio1, precio2, precio3, precio4, precio5];
-
-  
 
   const formData = new FormData();
   formData.append('nombre', nombre);
@@ -63,21 +60,7 @@ function enviarDatos( ) {
         response: response.text(),
       });
       if (response.status === 200) {
-      /*   document.getElementById('input-image').value = "";
-        nombre = "";
-        descripcion = "";
-        porcion1 = "";
-        porcion2 = "";
-        porcion3 = "";
-        porcion4 = "";
-        porcion5 = "";
-        precio1 = "";
-        precio2 = "";
-        precio3 = "";
-        precio4 = "";
-        precio5 = ""; */
-
-        alert(`Producto ${nombre} creado correctamente`);
+      alert(`Producto ${nombre} creado correctamente`);
       } else {
         alert("Error al crear el producto");
         response.status(400).json({msg: "error al crear el producto"})
