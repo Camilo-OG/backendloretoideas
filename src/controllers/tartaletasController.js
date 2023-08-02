@@ -3,13 +3,15 @@ const multer = require('multer')
 const path = require('path')
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '../../../React-LoretoIdeas/public/uploads'),
+  destination: path.join(__dirname, '../../../React-LoretoIdeas/public/img'),
   filename: (req, file, cb) => {
     cb(null,`${file.originalname}`)
   }
 })
 const upload = multer({storage: storage})
+
 exports.upload = upload.single('imagen')
+
 
 exports.createTartaleta = async (req, res) => {
   const imagen = req.file.originalname  
