@@ -1,9 +1,11 @@
 const mongoose = require('mongoose')
+require('dotenv').config();
 
+const dbUrl = process.env.URL
 
 const loretoIdeasDB = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/loretoideas');
+    await mongoose.connect(dbUrl);
     console.log("Conexion exitosa a la base de datos Loreto Ideas");
   } catch (error) {
     console.log(error);
