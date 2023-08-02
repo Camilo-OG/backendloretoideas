@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const tortasSchema = new mongoose.Schema({
+const tartaletasSchema = new mongoose.Schema({
   nombre: {
     type: String,
     require: [true, "El nombre requerido"],
@@ -9,8 +9,14 @@ const tortasSchema = new mongoose.Schema({
     type: String,
     require: [true, "La descripcion es requerida"],
   },
-  porciones: [ String ],
-  precio: [ String ],
+  diametro: {
+    type: String,
+    require: [true, "El diametro es requerido"],
+  },
+  precio: {
+    type: String,
+    require: [true, "El precio es requerido"],
+  },
   status: {
     type: String,
     require: true,
@@ -29,6 +35,6 @@ const tortasSchema = new mongoose.Schema({
 
 // con el schema creamos el modelo
 
-const TortasModel = mongoose.model("Torta", tortasSchema);
+const TartaletasModel = mongoose.model("Tartaleta", tartaletasSchema);
 
-module.exports = TortasModel;
+module.exports = tartaletasModel;
