@@ -1,4 +1,4 @@
-const TartaletasModel = require("../models/tortasSchema");
+const TartaletasModel = require("../models/tartaletasSchema");
 const multer = require('multer')
 const path = require('path')
 
