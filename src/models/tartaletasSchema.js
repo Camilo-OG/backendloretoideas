@@ -37,4 +37,4 @@ const tartaletasSchema = new mongoose.Schema({
 
 const TartaletasModel = mongoose.model("Tartaleta", tartaletasSchema);
 
-module.exports = tartaletasModel;
+module.exports = TartaletasModel;
