@@ -47,7 +47,7 @@ function enviarDatos( ) {
 
   
 
-  fetch('http://localhost:3000/agregartorta',{
+  fetch('https://backendloretoideas.onrender.com/agregartorta',{
     method: "POST",
     body: formData,
   })

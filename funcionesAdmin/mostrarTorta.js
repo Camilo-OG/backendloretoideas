@@ -1,6 +1,6 @@
 const contenedor = document.getElementById('contenedor')
 
-fetch("http://localhost:3000/mostrar")
+fetch("https://backendloretoideas.onrender.com/mostrar")
 .then(response => response.json())
 .then(tortas => {
   tortas.forEach(torta => {

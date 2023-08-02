@@ -1,6 +1,6 @@
 const formulario = document.getElementById('formulario');
 const selectId = document.getElementById('select-id')
-fetch("http://localhost:3000/mostrar")
+fetch("https://backendloretoideas.onrender.com/mostrar")
 .then(Response => Response.json())
 .then(tortas => {
   tortas.forEach(torta => {
@@ -61,7 +61,7 @@ function enviarDatos () {
 
   const id = selectId.value
 
-  fetch(`http://localhost:3000/modificarfull/${id}`,{
+  fetch(`https://backendloretoideas.onrender.com/modificarfull/${id}`,{
     method: "PUT",
     body: formData,
   })

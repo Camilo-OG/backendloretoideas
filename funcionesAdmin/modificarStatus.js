@@ -4,7 +4,7 @@ const newValue = document.getElementById('modify-value')
 const error = document.getElementById('error')
 
 
-fetch("http://localhost:3000/mostrar")
+fetch("https://backendloretoideas.onrender.com/mostrar")
 .then(Response => Response.json())
 .then(tortas => {
   tortas.forEach(torta => {
@@ -26,7 +26,7 @@ function modifyValue () {
     status: status
   };
 
-  fetch(`http://localhost:3000/modificar/${id}`, {
+  fetch(`https://backendloretoideas.onrender.com/modificar/${id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json"
