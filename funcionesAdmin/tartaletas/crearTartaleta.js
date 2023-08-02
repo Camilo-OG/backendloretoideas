@@ -34,23 +34,24 @@ function enviarDatos( ) {
     body: formData,
   })
   .then((response) => response.json())
-    .then(function (response) {
-      console.log({
-        Origen: "Recibiendo respuesta de la API",
-        status: response.status,
-        statusText: response.statusText,
-        response: response.text(),
-      });
-      if (response.status === 200) {
-      alert(`Producto ${nombre} creado correctamente`);
-      } else {
-        alert("Error al crear el producto");
-        response.status(400).json({msg: "error al crear el producto"})
-      }
-    })
-    .catch(function (error) {
-      console.log(error);
+  .then(response => {
+    console.log({
+    Origen: "Recibiendo respuesta de la API",
+    status: response.status,
+    statusText: response.statusText,
+    response: response.text(),
     });
+    if (response.status === 200) {
+    alert(`Producto ${nombre} creado correctamente`);
+    } else {
+      alert("Error al crear el producto");
+      console.log("no esta recibiendo el status 200")
+      response.status(400).json({msg: "error al crear el producto"})
+    }
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 
 }
 
