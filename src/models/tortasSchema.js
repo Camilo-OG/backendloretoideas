@@ -15,7 +15,7 @@ const tortasSchema = new mongoose.Schema({
     type: String,
     require: true,
     default: "ACTIVO",
-    emun: ["ACTIVO", "INACTIVO"],
+    enum: ["ACTIVO", "INACTIVO"],
   },
   imagen: {
     type: String,
@@ -27,8 +27,8 @@ const tortasSchema = new mongoose.Schema({
   }
 });
 
-// con el schema creamos el modelo
 
-const TortasModel = mongoose.model("Torta", tortasSchema);
 
-module.exports = TortasModel;
+const tortasModel = mongoose.model("torta", tortasSchema);
+
+module.exports = tortasModel;

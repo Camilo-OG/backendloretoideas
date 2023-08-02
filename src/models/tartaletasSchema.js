@@ -21,7 +21,7 @@ const tartaletasSchema = new mongoose.Schema({
     type: String,
     require: true,
     default: "ACTIVO",
-    emun: ["ACTIVO", "INACTIVO"],
+    enum: ["ACTIVO", "INACTIVO"],
   },
   imagen: {
     type: String,
@@ -33,8 +33,7 @@ const tartaletasSchema = new mongoose.Schema({
   }
 });
 
-// con el schema creamos el modelo
 
-const TartaletasModel = mongoose.model("Tartaleta", tartaletasSchema);
+const tartaletasModel = mongoose.model("tartaleta", tartaletasSchema);
 
-module.exports = TartaletasModel;
+module.exports = tartaletasModel;
