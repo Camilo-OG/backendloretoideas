@@ -3,17 +3,15 @@ function enviarDatos( ) {
 
   const error = document.getElementById('error-datos')
   const nombre = document.getElementById('input-nombre').value
-  const descripcion = document.getElementById('input-descripcion').value
-  const diametro = document.getElementById('input-diametro').value
-  const precio = document.getElementById('input-precio').value
-  const imgDescripcion = document.getElementById('input-descripcion-img').value
+  const apellido = document.getElementById('input-apellido').value
+  const username = document.getElementById('input-username').value
+  const password = document.getElementById('input-password').value
   
   if( 
   nombre === '' ||
-  descripcion === '' || 
-  diametro === '' || 
-  precio === '' ||
-  imgDescripcion === ''
+  apellido === '' || 
+  username === '' || 
+  password === '' 
   ) {
     return (error.textContent = "Todos los campos son obligatorios")
   }
@@ -21,15 +19,12 @@ function enviarDatos( ) {
 
   const formData = new FormData();
   formData.append('nombre', nombre);
-  formData.append('descripcion', descripcion);
-  formData.append('diametro', diametro);
-  formData.append('precio', precio);
-  formData.append('imagen', document.getElementById('input-imagen').files[0]);
-  formData.append('img_descripcion', imgDescripcion)
-
+  formData.append('apellido', apellido);
+  formData.append('username', username);
+  formData.append('password', password);
   
 
-  fetch('https://backendloretoideas.onrender.com/tartaleta/agregartartaleta',{
+  fetch('https://backendloretoideas.onrender.com/user/crear',{
     method: "POST",
     body: formData,
   })
@@ -41,11 +36,11 @@ function enviarDatos( ) {
       response: response.text(),
     });
     if (response.status === 200) {
-    alert(`Producto ${nombre} creado correctamente`);
+    alert(`Usuario: ${username} creado correctamente`);
     } else {
-      alert("Error al crear el producto");
+      alert(`Error al crear el usuario: ${username}`);
       console.log("no esta recibiendo el status 200")
-      response.status(400).json({msg: "error al crear el producto"})
+      response.status(400).json({msg: "error al crear el usuario"})
     }
   })
   .catch(function (error) {
