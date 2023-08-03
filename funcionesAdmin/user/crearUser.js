@@ -18,8 +18,8 @@ function enviarDatos( ) {
   const user = {
     nombre: nombre,
     apellido: apellido,
-    username:username,
-    password:password
+    username: username,
+    password: password
   }
   
 
