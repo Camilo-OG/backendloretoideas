@@ -1,4 +1,3 @@
-const userModel = require("../models/userSchema");
 const UserModel = require("../models/userSchema");
 
 exports.createUser = async (req, res) => {
@@ -12,7 +11,7 @@ exports.createUser = async (req, res) => {
   if( !nombre || !apellido || !username || !password) {
     return res.status(400).json({msg: "todos los campos son obligatorios"})
   }
-  const userConsultado = await userModel.findOne({username: username })
+  const userConsultado = await UserModel.findOne({username: username })
   if(userConsultado == null){
     const user = {
       nombre: nombre,
@@ -36,7 +35,7 @@ exports.createUser = async (req, res) => {
 
 exports.showUsers = async (req , res) => {
   try {
-    const userList = await userModel.find();
+    const userList = await UserModel.find();
     res.status(200).json(userList)
   } catch (error) {
     console.log(error)
