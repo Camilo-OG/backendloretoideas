@@ -16,7 +16,7 @@
               <h1>Crear usuario</h1>
             </div>
         </div class="justify-content-center">
-        <form class="row g-3" id="formulario" >
+        <form class="row g-3" id="formulario" enctype="multipart/form-data">
             <p id="error-datos" class="text-danger"></p>
             <div class="col-12">
                 <label for="input-nombre" class="form-label">Nombre:</label>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-6">
               <label for="input-password" class="form-label">Contraseña:</label>
-              <input type="text" class="form-control" placeholder="Ingrese su contraseña" id="input-password" autocomplete="current-password">
+              <input type="password" class="form-control" placeholder="Ingrese su contraseña" id="input-password" autocomplete="current-password">
             </div>
             <div class="col-12">
                 <button type="submit" id="button" class="btn btn-primary" >Crear Usuario</button>
