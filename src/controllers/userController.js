@@ -11,7 +11,7 @@ exports.createUser = async (req, res) => {
     
     return res.status(400).json({msg: `${nombre,apellido,username,password}`})
   }
-  const userConsultado = await UserModel.findOne({username: username })
+  const userConsultado = await UserModel.findOne({username: "username" })
   if(userConsultado == null){
     const user = {
       nombre: nombre,
