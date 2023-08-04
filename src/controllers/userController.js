@@ -10,6 +10,7 @@ exports.createUser = async (req, res) => {
   } = req.body;
   
   if( !nombre || !apellido || !username || !password) {
+    console.log(nombre,apellido,username,password)
     return res.status(400).json({msg: "todos los campos son obligatorios"})
   }
   const userConsultado = await UserModel.findOne({username: username })

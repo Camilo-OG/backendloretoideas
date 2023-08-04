@@ -13,6 +13,7 @@ function enviarDatos( ) {
   username == '' || 
   password == '' 
   ) {
+    console.log(user)
     return (error.textContent = `Todos los campos son obligatorios`)
   }
   const user = {
