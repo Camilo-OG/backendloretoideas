@@ -2,11 +2,14 @@ const UserModel = require("../models/userSchema");
 
 exports.createUser = async (req, res) => {
   
-  const {nombre,apellido,username,password} = req.body;
+  const nombre = req.body
+  const apellido = req.body
+  const username = req.body
+  const password = req.body
   
   if( !nombre || !apellido || !username || !password) {
     
-    return res.status(400).json({msg: "no esta llegando aqui"})
+    return res.status(400).json({msg: `${nombre,apellido,username,password}`})
   }
   const userConsultado = await UserModel.findOne({username: username })
   if(userConsultado == null){

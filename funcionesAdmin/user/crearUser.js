@@ -7,7 +7,11 @@ function enviarDatos( ) {
   const username = document.getElementById('input-username').value
   const password = document.getElementById('input-password').value
   
-  
+  const formData = new FormData();
+  formData.append('nombre', nombre);
+  formData.append('apellido', apellido);
+  formData.append('username', username);
+  formData.append('password', password);
   if( 
   nombre === '' ||
   apellido === '' || 
@@ -15,13 +19,9 @@ function enviarDatos( ) {
   password === '' 
   ) {
     
-    return (error.textContent = `Todos los campos son obligatorios`)
+    return (error.textContent = `Todos los campos son obligatorios${formData}`)
   }
-  const formData = new FormData();
-  formData.append('nombre', nombre);
-  formData.append('apellido', apellido);
-  formData.append('username', username);
-  formData.append('password', password);
+  
   
 
   fetch('https://backendloretoideas.onrender.com/user/crear',{
