@@ -7,30 +7,25 @@ exports.createUser = async (req, res) => {
   const username = req.body
   const password = req.body
   
+  const user = {
+    nombre: nombre,
+    apellido: apellido,
+    username: username,
+    password: password
+  };
+
   if( !nombre || !apellido || !username || !password) {
     
-    return res.status(400).json({msg: `${nombre,apellido,username,password}`})
+    return res.status(400).json({msg: `funciona plz`})
   }
-  const userConsultado = await UserModel.findOne({username: "username" })
-  if(userConsultado == null){
-    const user = {
-      nombre: nombre,
-      apellido: apellido,
-      username: username,
-      password: password
-    };
-    try{
-    await UserModel.create(user);
-    res.status(200).json({ msg: ` usuario ${username} ha sido creado exitosamente`})
-    console.log(`${username} ha sido creado exitosamente`)
-    } catch (err) {
-      res.status(400).json({msg: "El usuario no se ha podido agregar", err})
-      console.log("error", {msg: err})
-    }
-  } else {
-    res.status(400).json({msg: "El username ya existe"})
-  }
-  
+  try{
+  await UserModel.create(user);
+  res.status(200).json({ msg: ` usuario ${username} ha sido creado exitosamente`})
+  console.log(`${username} ha sido creado exitosamente`)
+  } catch (err) {
+    res.status(400).json({msg: "El usuario no se ha podido agregar",err})
+    console.log("error", {msg: err})
+  } 
 };
 
 exports.showUsers = async (req , res) => {
