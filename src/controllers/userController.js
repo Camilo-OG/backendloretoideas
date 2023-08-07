@@ -19,7 +19,7 @@ exports.createUser = async (req, res) => {
     return res.status(400).json({msg: `funciona plz`})
   }
   try{
-  await UserModel.create(user);
+  await UserModel.create({user});
   res.status(200).json({ msg: ` usuario ${username} ha sido creado exitosamente`})
   console.log(`${username} ha sido creado exitosamente`)
   } catch (err) {

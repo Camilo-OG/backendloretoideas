@@ -4,7 +4,7 @@ const newValue = document.getElementById('modify-value')
 const error = document.getElementById('error')
 
 
-fetch("https://backendloretoideas.onrender.com/agregartartaleta")
+fetch("https://backendloretoideas.onrender.com/tartaleta/mostrartartaletas")
 .then(Response => Response.json())
 .then(tartaletas => {
   tartaletas.forEach(tartaleta => {
@@ -26,7 +26,7 @@ function modifyValue () {
     status: status
   };
 
-  fetch(`https://backendloretoideas.onrender.com/modificartartaleta/${id}`, {
+  fetch(`https://backendloretoideas.onrender.com/tartaleta/modificartartaleta/${id}`, {
   method: "PUT",
   headers: {
     "Content-Type": "application/json"
@@ -49,6 +49,6 @@ function modifyValue () {
     }
   })
   .catch(function (error) {
-    console.log(error);
+    console.log('algo salio mal :',error);
   });
 }
