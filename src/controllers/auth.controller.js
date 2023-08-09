@@ -7,7 +7,7 @@ try {
     const userlist= await userModel.find()
     res.status(200).json(userlist)
 } catch (error) {
-    console.log(error)
+    console.log("saludo desde el registro")
     res.status(400).json({msg: error})
 }
 }
