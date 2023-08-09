@@ -17,8 +17,8 @@ router.put('/tartaleta/modificartartaletafull/:id', tartaletasController.upload,
 
 
     //! Rutas Login
-router.get("/register", authController.register)
-router.get("/login", authController.login)
+router.get("/api/register", authController.register)
+router.get("/api/login", authController.login)
 
 
 module.exports=router
