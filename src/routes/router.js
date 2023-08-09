@@ -1,9 +1,9 @@
 const express = require('express')
 const router = require('express').Router();
 const tartaletasController = require('../controllers/tartaletasController')
-const userController = require('../controllers/userController')
 const tortasController = require('../controllers/tortasController')
-
+const register= require("../controllers/auth.controller.js")
+const login= require("../controllers/auth.controller.js")
 
 router.post('/agregartorta', tortasController.upload, tortasController.createTorta)
 router.get('/mostrar', tortasController.mostrarTortas)
@@ -15,6 +15,10 @@ router.get('/tartaleta/mostrartartaletas', tartaletasController.mostrarTartaleta
 router.put('/tartaleta/modificartartaleta/:id', tartaletasController.modificarStatus)
 router.put('/tartaleta/modificartartaletafull/:id', tartaletasController.upload, tartaletasController.modificarTotal)
 
-router.post('/user/crear',userController.createUser)
+
+    //! Rutas Login
+router.post("/register", register)
+router.post("/login", login)
+
 
 module.exports = router
