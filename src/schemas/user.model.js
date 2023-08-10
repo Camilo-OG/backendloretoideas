@@ -16,6 +16,8 @@ const userSchema= new mongoose.Schema({
     type: String,
     require: true,
   },
+}, {
+  timestamps:true
 });
 
 const userModel = mongoose.model("Login",userSchema);
