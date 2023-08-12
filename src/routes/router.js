@@ -16,6 +16,7 @@ router.put("/modificarfull/:id", tortasController.upload, tortasController.modif
 /* Rutas Tartaletas */
 router.post("/tartaleta/agregartartaleta", tartaletasController.upload,  tartaletasController.createTartaleta);
 router.get("/tartaleta/mostrartartaletas", tartaletasController. mostrarTartaletas);
+router.get("/tartaleta/mostraruno/:id", tartaletasController.findOne);
 router.put("/tartaleta/modificartartaleta/:id", tartaletasController.modificarStatus);
 router.put("/tartaleta/modificartartaletafull/:id", tartaletasController.upload, tartaletasController.modificarTotal);
 
