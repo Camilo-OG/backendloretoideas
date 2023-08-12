@@ -102,4 +102,17 @@ exports.modifyFull = async(req, res) => {
     } 
 }
 
+exports.findOne = async (req, res) => {
+  const idConsultada = req.body._id
+  const tortaId = await TortasModel.findOne({_id: idConsultada } )
+  if( tortaId !== null ){
+    res.status(200).json(tortaId)
+    alert('Registro encontrado')
+    console.log('registro encontrado con exito')
+  } else {
+    res.status(400).json({msg: `No se encontro el registro con id: ${idConsultada}`})
+    console.log('no se encontro el registro')
+  }
+}
+
 
