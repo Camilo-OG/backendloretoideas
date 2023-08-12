@@ -103,7 +103,7 @@ exports.modifyFull = async(req, res) => {
 }
 
 exports.findOne = async (req, res) => {
-  const idConsultada = req.body._id
+  const idConsultada = req.params.id
   const tortaId = await TortasModel.findOne({_id: idConsultada } )
   if( tortaId !== null ){
     res.status(200).json(tortaId)
