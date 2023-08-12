@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 require('dotenv').config();
 
-const dbUrl = process.env.URL2
+const dbUrl = process.env.URL
 
 const loretoIdeasDB = async () => {
   try {
