@@ -2,7 +2,8 @@ const express = require("express");
 const router = require("express").Router();
 const tartaletasController = require("../controllers/tartaletasController");
 const tortasController = require("../controllers/tortasController");
-const authController = require("../middlewares/validateToken");
+const authController = require("../controllers/auth.controller");
+const authRequired= require("../middlewares/validateToken")
 
 
 
@@ -26,7 +27,7 @@ router.put("/tartaleta/modificartartaletafull/:id", tartaletasController.upload,
 router.post("/register", authController.register);
 router.get("/login", authController.login);
 router.post("/logout", authController.logout);
-router.get("/administrador", authController.administrador);
+router.get("/administrador",authRequired, authController.administrador);
 
 
 
