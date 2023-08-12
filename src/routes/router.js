@@ -2,7 +2,8 @@ const express = require("express");
 const router = require("express").Router();
 const tartaletasController = require("../controllers/tartaletasController");
 const tortasController = require("../controllers/tortasController");
-const authController = require("../controllers/auth.controller");
+const authController = require("../middlewares/validateToken");
+
 
 router.post(
   "/agregartorta",
@@ -39,5 +40,9 @@ router.put(
 //! Rutas Login
 router.post("/register", authController.register);
 router.get("/login", authController.login);
+router.post("/logout", authController.logout);
+router.get("/administrador", authController.administrador);
 
-module.exports = router;
+
+
+module.exports=router;

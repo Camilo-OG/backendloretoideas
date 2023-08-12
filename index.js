@@ -3,7 +3,6 @@ const app = express();
 const loretoIdeasDB = require("./src/services/conexion");
 const cors = require("cors");
 const router = require("./src/routes/router");
-const authRoutes = require("../backendloretoideas/src/routes/router");
 
 const port = process.env.PORT || 3000;
 app.use(express.json());
@@ -13,7 +12,6 @@ const corsOptions = {
   methods: ["GET", "POST", "PUT"], // Métodos permitidos
   allowedHeaders: ["Content-Type", "Authorization"], // Encabezados permitidos
 };
-app.use(authRoutes);
 app.use(cors(corsOptions));
 
 app.use(express.json());
