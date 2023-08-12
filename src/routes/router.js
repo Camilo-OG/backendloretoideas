@@ -3,7 +3,7 @@ const router = require("express").Router();
 const tartaletasController = require("../controllers/tartaletasController");
 const tortasController = require("../controllers/tortasController");
 const authController = require("../controllers/auth.controller");
-const authRequired= require("../middlewares/validateToken")
+const {authRequired}= require("../middlewares/validateToken")
 
 
 
