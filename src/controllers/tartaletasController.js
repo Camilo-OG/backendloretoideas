@@ -101,3 +101,20 @@ exports.modificarTotal = async(req, res) => {
     console.log('no se encontro el registro')
     } 
 }
+
+exports.findOne = async (req, res) => {
+  const idConsultada = req.params.id
+  try {
+  const tartaletaId = await TartaletasModel.findOne({_id: idConsultada } )
+  if( tartaletaId !== null ){
+    res.status(200).json(tartaletaId)
+    console.log('registro encontrado con exito')
+  } else {
+    res.status(400).json({msg: `No se encontro el registro con id: ${idConsultada}`})
+    console.log('no se encontro el registro')
+  }
+  } catch (error) {
+    console.error('Error al buscar el registro:', error);
+    res.status(500).json({ msg: 'Ocurrió un error en el servidor' });
+  }
+}
