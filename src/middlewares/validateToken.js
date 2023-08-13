@@ -1,18 +1,19 @@
 const jwt = require("jsonwebtoken");
-const  TOKEN_SECRET  = require("../libs/jwt");
+const tokenSecret = process.env.TOKEN_SECRET;
 
 exports.authRequired = (req, res, next) => {
-  const cookies = req.cookies;
-
+  const token = req.cookies;
+  console.log(user);
+   
   if (!token)
     return res
       .status(401)
       .json({ message: "No hay token , ingreso no autorizado" });
 
-  jwt.verify(token, TOKEN_SECRET, (err, user) => {
+  jwt.verify(token, tokenSecret, (err, user) => {
+    
     if (err) return res.status(403).json({ message: "token invalido" });
 
-    console.log(user);
     next();
   });
 };
