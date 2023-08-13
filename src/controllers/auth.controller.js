@@ -1,4 +1,3 @@
-const express = require("express");
 const User = require("../schemas/user.model");
 const bcrypt = require("bcryptjs");
 const createAccesToken = require("../libs/jwt");
