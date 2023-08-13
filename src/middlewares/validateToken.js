@@ -1,4 +1,5 @@
 exports.authRequired = (req, res, next) => {
-  console.log("validando token");
+const cookies=req.headers.cookies;
+console.log(cookies);
   next();
 };
