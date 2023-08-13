@@ -69,6 +69,16 @@ exports.logout = (req, res) => {
   return res.sendStatus(200);
 };
 
-exports.administrador= (req, res)=> {
-  res.send("administrador")
-}
+exports.administrador = async (req, res) => {
+  const userFound = await User.findById(req.user.id);
+  if (!userFound)
+    return res.status(400).json({ message: "usuario no encontrado" });
+
+  return res.json({
+    id: userFound._id,
+    username: userFound.username,
+    email: userFound.email,
+    createdAt: userFound.createdAt,
+    updateAt: userFound.updateAt,
+  });
+};

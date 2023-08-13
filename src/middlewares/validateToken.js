@@ -13,7 +13,8 @@ exports.authRequired = (req, res, next) => {
  
 
     if (err) res.status(403).json({ message: "token invalido" });
-    console.log(user);
+ 
+    req.user=user
     next();
   });
 };

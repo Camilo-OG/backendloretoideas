@@ -3,7 +3,9 @@ const router = require("express").Router();
 const tartaletasController = require("../controllers/tartaletasController");
 const tortasController = require("../controllers/tortasController");
 const authController = require("../controllers/auth.controller");
-const {authRequired}= require("../middlewares/validateToken")
+const {authRequired}= require("../middlewares/validateToken");
+const { validateSchema } = require("../middlewares/validator.middleware");
+const {registerSchema, loginSchema}=require("../schemas/auth.schema")
 
 
 
@@ -24,8 +26,8 @@ router.put("/tartaleta/modificartartaletafull/:id", tartaletasController.upload,
 
 
 //! Rutas Login
-router.post("/register", authController.register);
-router.get("/login", authController.login);
+router.post("/register", validateSchema(registerSchema),authController.register);
+router.get("/login",validateSchema(loginSchema), authController.login);
 router.post("/logout", authController.logout);
 router.get("/administrador",authRequired, authController.administrador);
 
