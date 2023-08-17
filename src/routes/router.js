@@ -27,7 +27,7 @@ router.put("/tartaleta/modificartartaletafull/:id", tartaletasController.upload,
 
 //! Rutas Login
 router.post("/register", validateSchema(registerSchema),authController.register);
-router.get("/login",validateSchema(loginSchema), authController.login);
+router.post("/login",validateSchema(loginSchema), authController.login);
 router.post("/logout", authController.logout);
 router.get("/administrador",authRequired, authController.administrador);
 

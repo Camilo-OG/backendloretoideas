@@ -9,14 +9,14 @@ exports.registerSchema = z.object({
       required_error: "El correo electronico es requerido",
     })
     .email({
-      message: "correo invalido",
+      message: "Correo invalido",
     }),
   password: z
     .string({
       required_error: "La contraseña es requerida",
     })
     .min(6, {
-      message: "la constraseña debe tener minimo 6 caracterres",
+      message: "La constraseña debe tener minimo 6 caracteres",
     }),
 });
 
@@ -26,13 +26,13 @@ exports.loginSchema = z.object({
       required_error: "El correo electronico es requerido",
     })
     .email({
-      message: "correo invalido",
+      message: "Correo invalido",
     }),
   password: z
     .string({
       required_error: "La contraseña es requerida",
     })
     .min(6, {
-      message: "la constraseña debe tener minimo 6 caracterres",
+      message: "La constraseña debe tener minimo 6 caracteres",
     }),
 });
