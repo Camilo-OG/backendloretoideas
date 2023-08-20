@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
-  origin: "https://lustrous-starship-9bfc30.netlify.app",
+  origin: "http://localhost:5173",
   methods: ["GET", "POST", "PUT"], // Métodos permitidos
   allowedHeaders: ["Content-Type", "Authorization"], // Encabezados permitidos
 };
