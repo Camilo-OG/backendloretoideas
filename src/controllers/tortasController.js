@@ -88,13 +88,13 @@ exports.modifyFull = async(req, res) => {
     if( !nombre || !descripcion || !img_descripcion) {
       return res.status(400).json({msg: "todos los campos son obligatorios"})
     } else {
-    const torta = TortasModel({
+    const torta = {
       nombre: nombre,
       descripcion: descripcion,
       porciones: porciones,
       precio: precio,
       img_descripcion: img_descripcion
-    });
+    };
     if(req.file){
       const imagen = req.file.originalname;
       torta.setImagen(imagen)
