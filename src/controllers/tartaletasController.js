@@ -4,9 +4,7 @@ const path = require('path');
 const tartaletasModel = require("../models/tartaletasSchema");
 
 const storage = multer.diskStorage({
-  destination: function (req,file,cb){
-    cb(null,'./public/img')
-  },
+  destination: path.join(__dirname, './public/img'),
   filename: (req, file, cb) => {
     cb(null,`${file.originalname}`)
   }
