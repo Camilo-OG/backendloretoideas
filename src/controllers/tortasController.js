@@ -1,6 +1,9 @@
 const TortasModel = require("../models/tortasSchema");
 const multer = require('multer')
 const path = require('path')
+require('dotenv').config();
+
+const url = process.env.IMAGE_URL
 
 
 const storage = multer.diskStorage({
@@ -73,6 +76,7 @@ exports.modifyStatus = async(req , res) => {
 }
 
 exports.modifyFull = async(req, res) => {
+
   const idConsultada = req.params.id;
   const tortaId = await TortasModel.findOne({_id: idConsultada } )
   if( tortaId !== null ){
@@ -97,7 +101,7 @@ exports.modifyFull = async(req, res) => {
     };
     if(req.file){
       const imagen = req.file.originalname;
-      torta.setImagen(imagen)
+      updatedFields.imagen = `${url}${imagen}`;
     }
     await TortasModel.updateOne({_id: idConsultada }, torta)
     res.status(200).json({msg: "registro actualizado correctamente"})
