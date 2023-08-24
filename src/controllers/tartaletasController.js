@@ -1,9 +1,12 @@
 const TartaletasModel = require("../models/tartaletasSchema");
 const multer = require('multer')
-const path = require('path')
+const path = require('path');
+const tartaletasModel = require("../models/tartaletasSchema");
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '../../../React-LoretoIdeas/public/img'),
+  destination: function (req,file,cb){
+    cb(null,'./public/img')
+  },
   filename: (req, file, cb) => {
     cb(null,`${file.originalname}`)
   }
@@ -14,7 +17,8 @@ exports.upload = upload.single('imagen')
 
 
 exports.createTartaleta = async (req, res) => {
-  const imagen = req.file.originalname  
+  
+   
   const {
     nombre,
     descripcion,
@@ -22,15 +26,18 @@ exports.createTartaleta = async (req, res) => {
     precio,
     img_descripcion,
   } = req.body;
-  if( !nombre || !descripcion || !diametro || !precio || !imagen || !img_descripcion) {
+  if( !nombre || !descripcion || !diametro || !precio || !img_descripcion) {
     return res.status(400).json({msg: "todos los campos son obligatorios"})
+  }
+  if(req.file){
+    const imagen = req.file;
+    TartaletasModel.setImagen(imagen)
   }
   const tartaleta = {
     nombre: nombre,
     descripcion: descripcion,
     diametro: diametro,
     precio: precio,
-    imagen: imagen,
     img_descripcion: img_descripcion
   };
   try{
