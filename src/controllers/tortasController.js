@@ -34,7 +34,7 @@ exports.createTorta = async (req, res) => {
       img_descripcion: img_descripcion
     });
     if(req.file){
-      const imagen = req.file;
+      const imagen = req.file.originalname;
       torta.setImagen(imagen)   
     }
   await TortasModel.create(torta);
@@ -96,7 +96,7 @@ exports.modifyFull = async(req, res) => {
       img_descripcion: img_descripcion
     });
     if(req.file){
-      const imagen = req.file;
+      const imagen = req.file.originalname;
       torta.setImagen(imagen)
     }
     await TortasModel.updateOne({_id: idConsultada }, torta)

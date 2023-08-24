@@ -99,7 +99,7 @@ exports.modificarTotal = async(req, res) => {
       img_descripcion: img_descripcion
     });
     if(req.file){
-      const imagen = req.file;
+      const imagen = req.file.originalname;
       tartaleta.setImagen(imagen)
     }
 
