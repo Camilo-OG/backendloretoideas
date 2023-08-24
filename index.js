@@ -20,7 +20,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(cookieParser());
-app.use('/public', express.static(`${__dirname}/public/img`))
+app.use('/public', express.static(`${__dirname}/src/public/img`))
  
 app.use("/", router);
 

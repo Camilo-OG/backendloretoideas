@@ -1,10 +1,10 @@
 const TartaletasModel = require("../models/tartaletasSchema");
 const multer = require('multer')
 const path = require('path');
-const tartaletasModel = require("../models/tartaletasSchema");
+
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, './public/img'),
+  destination: path.join(__dirname, '../public/img'),
   filename: (req, file, cb) => {
     cb(null,`${file.originalname}`)
   }
@@ -29,19 +29,17 @@ exports.createTartaleta = async (req, res) => {
   }
   
   try{
-    const tartaleta = {
+    const tartaleta = TartaletasModel({
       nombre: nombre,
       descripcion: descripcion,
       diametro: diametro,
       precio: precio,
       img_descripcion: img_descripcion
-    };
+    });
     if(req.file){
-    const imagen = req.file;
-    TartaletasModel.setImagen(imagen)
-    } else{
-      return res.status(400).json({msg:"problemas con la imagen"})
-    }
+    const imagenUrl = req.file.originalname;
+    tartaleta.setImagen(imagenUrl)
+    } 
   await TartaletasModel.create(tartaleta);
   res.status(200).json({ msg: `${nombre} ha sido creado exitosamente`})
   console.log(`${nombre} ha sido creado exitosamente`)
