@@ -101,7 +101,7 @@ exports.modifyFull = async(req, res) => {
     };
     if(req.file){
       const imagen = req.file.originalname;
-      updatedFields.imagen = `${url}${imagen}`;
+      torta.imagen = `${url}${imagen}`;
     }
     await TortasModel.updateOne({_id: idConsultada }, torta)
     res.status(200).json({msg: "registro actualizado correctamente"})
