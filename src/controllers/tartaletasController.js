@@ -79,7 +79,7 @@ exports.modificarTotal = async(req, res) => {
   const idConsultada = req.params.id;
   const tartaletaId = await TartaletasModel.findOne({_id: idConsultada } )
   if( tartaletaId !== null ){
-    const imagen = req.file.originalname  
+      
     const {
       nombre,
       descripcion,
@@ -88,17 +88,21 @@ exports.modificarTotal = async(req, res) => {
       img_descripcion,
     } = req.body;
 
-    if( !nombre || !descripcion || !diametro || !precio || !imagen || !img_descripcion) {
+    if( !nombre || !descripcion || !diametro || !precio || !img_descripcion) {
       return res.status(400).json({msg: "todos los campos son obligatorios"})
     } else {
-    const tartaleta = {
+    const tartaleta = TartaletasModel({
       nombre: nombre,
       descripcion: descripcion,
       diametro: diametro,
       precio: precio,
-      imagen: imagen,
       img_descripcion: img_descripcion
-    };
+    });
+    if(req.file){
+      const imagen = req.file;
+      tartaleta.setImagen(imagen)
+    }
+
     await TartaletasModel.updateOne({_id: idConsultada }, tartaleta)
     res.status(200).json({msg: "registro actualizado correctamente"})
     console.log('registro actualizado correctamente')} 

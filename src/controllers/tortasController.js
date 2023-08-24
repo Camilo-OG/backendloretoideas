@@ -4,7 +4,7 @@ const path = require('path')
 
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname, '../../../React-LoretoIdeas/public/img'),
+  destination: path.join(__dirname, '../public/img'),
   filename: (req, file, cb) => {
     cb(null,`${file.originalname}`)
   }
@@ -14,7 +14,7 @@ const upload = multer({storage: storage})
 exports.upload = upload.single('imagen')
 
 exports.createTorta = async (req, res) => {
-  const imagen = req.file.originalname  
+  
   const {
     nombre,
     descripcion,
@@ -22,18 +22,21 @@ exports.createTorta = async (req, res) => {
     precio,
     img_descripcion,
   } = req.body;
-  if( !nombre || !descripcion || !imagen || !img_descripcion) {
+  if( !nombre || !descripcion || !img_descripcion) {
     return res.status(400).json({msg: "todos los campos son obligatorios"})
   }
-  const torta = {
-    nombre: nombre,
-    descripcion: descripcion,
-    porciones: porciones,
-    precio: precio,
-    imagen: imagen,
-    img_descripcion: img_descripcion
-  };
   try{
+    const torta = TortasModel({
+      nombre: nombre,
+      descripcion: descripcion,
+      porciones: porciones,
+      precio: precio,
+      img_descripcion: img_descripcion
+    });
+    if(req.file){
+      const imagen = req.file;
+      torta.setImagen(imagen)   
+    }
   await TortasModel.create(torta);
   res.status(200).json({ msg: `${nombre} ha sido creado exitosamente`})
   console.log(`${nombre} ha sido creado exitosamente`)
@@ -73,7 +76,7 @@ exports.modifyFull = async(req, res) => {
   const idConsultada = req.params.id;
   const tortaId = await TortasModel.findOne({_id: idConsultada } )
   if( tortaId !== null ){
-    const imagen = req.file.originalname  
+      
     const {
       nombre,
       descripcion,
@@ -82,17 +85,20 @@ exports.modifyFull = async(req, res) => {
       img_descripcion,
     } = req.body;
 
-    if( !nombre || !descripcion || !imagen || !img_descripcion) {
+    if( !nombre || !descripcion || !img_descripcion) {
       return res.status(400).json({msg: "todos los campos son obligatorios"})
     } else {
-    const torta = {
+    const torta = TortasModel({
       nombre: nombre,
       descripcion: descripcion,
       porciones: porciones,
       precio: precio,
-      imagen: imagen,
       img_descripcion: img_descripcion
-    };
+    });
+    if(req.file){
+      const imagen = req.file;
+      torta.setImagen(imagen)
+    }
     await TortasModel.updateOne({_id: idConsultada }, torta)
     res.status(200).json({msg: "registro actualizado correctamente"})
     console.log('registro actualizado correctamente')} 
