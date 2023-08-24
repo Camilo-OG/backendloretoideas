@@ -37,8 +37,8 @@ exports.createTartaleta = async (req, res) => {
       img_descripcion: img_descripcion
     });
     if(req.file){
-    const imagenUrl = req.file.originalname;
-    tartaleta.setImagen(imagenUrl)
+    const imagen = req.file.originalname;
+    tartaleta.setImagen(imagen)
     } 
   await TartaletasModel.create(tartaleta);
   res.status(200).json({ msg: `${nombre} ha sido creado exitosamente`})
