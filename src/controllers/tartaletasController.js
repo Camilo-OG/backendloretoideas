@@ -29,18 +29,21 @@ exports.createTartaleta = async (req, res) => {
   if( !nombre || !descripcion || !diametro || !precio || !img_descripcion) {
     return res.status(400).json({msg: "todos los campos son obligatorios"})
   }
-  if(req.file){
+  
+  try{
+    const tartaleta = {
+      nombre: nombre,
+      descripcion: descripcion,
+      diametro: diametro,
+      precio: precio,
+      img_descripcion: img_descripcion
+    };
+    if(req.file){
     const imagen = req.file;
     TartaletasModel.setImagen(imagen)
-  }
-  const tartaleta = {
-    nombre: nombre,
-    descripcion: descripcion,
-    diametro: diametro,
-    precio: precio,
-    img_descripcion: img_descripcion
-  };
-  try{
+    } else{
+      return res.status(400).json({msg:"problemas con la imagen"})
+    }
   await TartaletasModel.create(tartaleta);
   res.status(200).json({ msg: `${nombre} ha sido creado exitosamente`})
   console.log(`${nombre} ha sido creado exitosamente`)
