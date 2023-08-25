@@ -34,7 +34,7 @@ const tartaletasSchema = new mongoose.Schema({
 });
 
 tartaletasSchema.methods.setImagen = function setImagen(filename) {
-  this.imagen = `https://backendloretoideas.onrender.com/public/${filename}`
+  this.imagen = `${filename}`
 }
 
 const tartaletasModel = mongoose.model("tartaleta", tartaletasSchema);

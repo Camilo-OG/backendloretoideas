@@ -28,7 +28,7 @@ const tortasSchema = new mongoose.Schema({
 });
 
 tortasSchema.methods.setImagen = function setImagen(filename) {
-  this.imagen = `https://backendloretoideas.onrender.com/public/${filename}`
+  this.imagen = `${filename}`
 }
 
 const tortasModel = mongoose.model("torta", tortasSchema);
