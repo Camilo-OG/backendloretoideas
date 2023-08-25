@@ -9,7 +9,7 @@ const url = process.env.IMAGE_URL
 const storage = multer.diskStorage({
   destination: path.join(__dirname, '../public/img'),
   filename: (req, file, cb) => {
-    cb(null,`${file.originalname}`)
+    cb(null,`${Date.now()}-${file.originalname}`)
   }
 })
 const upload = multer({storage: storage})
