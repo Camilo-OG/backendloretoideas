@@ -1,7 +1,9 @@
 const TartaletasModel = require("../models/tartaletasSchema");
 const multer = require('multer')
 const path = require('path');
+require('dotenv').config();
 
+const url = process.env.IMAGE_URL
 
 const storage = multer.diskStorage({
   destination: path.join(__dirname, '../public/img'),
@@ -100,7 +102,7 @@ exports.modificarTotal = async(req, res) => {
     });
     if(req.file){
       const imagen = req.file.originalname;
-      tartaleta.setImagen(imagen)
+      tartaleta.imagen = `${url}${imagen}`
     }
 
     await TartaletasModel.updateOne({_id: idConsultada }, tartaleta)
