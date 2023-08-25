@@ -93,13 +93,13 @@ exports.modificarTotal = async(req, res) => {
     if( !nombre || !descripcion || !diametro || !precio || !img_descripcion) {
       return res.status(400).json({msg: "todos los campos son obligatorios"})
     } else {
-    const tartaleta = TartaletasModel({
+    const tartaleta = {
       nombre: nombre,
       descripcion: descripcion,
       diametro: diametro,
       precio: precio,
       img_descripcion: img_descripcion
-    });
+    };
     if(req.file){
       const imagen = req.file.originalname;
       tartaleta.imagen = `${url}${imagen}`
