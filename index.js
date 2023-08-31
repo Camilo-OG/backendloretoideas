@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 const corsOptions = {
   origin: [
     "http://localhost:5173",
-    "https://64e78de711495833f3514896--lustrous-starship-9bfc30.netlify.app"
+    "https://64f0eb1646381b35262cb25c--lustrous-starship-9bfc30.netlify.app"
   ],
   methods: ["GET", "POST", "PUT"], // Métodos permitidos
   allowedHeaders: ["Content-Type", "Authorization"], // Encabezados permitidos
