@@ -102,7 +102,7 @@ exports.modificarTotal = async(req, res) => {
     };
     if(req.file){
       const imagen = req.file.originalname;
-      tartaleta.imagen = `${url}${imagen}`
+      tartaleta.imagen = `${imagen}`
     }
 
     await TartaletasModel.updateOne({_id: idConsultada }, tartaleta)
